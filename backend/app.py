@@ -11,5 +11,13 @@ def handle_audio(audio):
     print(audio)
     return "HELLO"
 
+@app.route("/")
+def index():
+    return "Hello."
+
+@app.route("/interpreter", methods=['POST'])
+def interpret():
+    return 'hello'
+
 if __name__ == "__main__":
     socketio.run(app, debug=True, host="127.0.0.1", port=5000)

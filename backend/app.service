@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve backend metro app
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/MetroHacks2023/backend
+Environment="PATH=/home/MetroHacks2023/backend/.venv/bin"
+ExecStart=/home/MetroHacks2023/backend/.venv/bin/gunicorn -k gevent --workers 3 --bind unix:metro.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
