@@ -1,7 +1,6 @@
-import Microphone from "../components/Microphone";
+import Mic from "../components/Mic";
+
 
 export default function Interpreter(){
-    return <div>
-  <Microphone></Microphone>
-  </div>
+    return <Mic/>
 }
