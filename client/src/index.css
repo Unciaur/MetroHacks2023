@@ -1,0 +1,100 @@
+
+@keyframes background {
+    from{background-position-x: 0%;}
+    to{background-position-x: 100%;}
+}
+
+
+body{
+    background-color: rgb(218, 187, 16);
+    /* background-size: 300%; */
+    /* animation: background 4s infinite alternate linear; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+#navbar{
+    background-color: black;
+    /* border-radius: 30px; */
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 0;
+    color: white;
+}
+
+#navbar > div {
+    margin: 0 25px;
+}
+
+#navbar .title{
+    margin: 0;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#nav-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-align: center;
+}
+
+#nav-links a{
+    background-color: purple;
+    border-radius: 20px;
+    color: white;
+    padding: 5px 8px;
+    font-weight: bold;
+}
+
+#nav-links a:hover{
+    background-color: rgb(65, 65, 219);
+    outline: 2px solid white;
+}
+
+
+#main{
+    background-color: white;
+    color: black;
+    border-radius: 18px;
+    
+    min-width: 60%;
+    max-width: 80%;
+    min-height: 50%;
+    max-height: 70%;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+
+#microphone{
+    background-color: rgb(0, 0, 0);
+    
+    border-radius: 40px;
+    height: 40%;
+}
+
+section.hero h1{
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}
