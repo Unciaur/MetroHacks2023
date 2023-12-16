@@ -1,0 +1,22 @@
+
+
+body{
+    background-color: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+#main{
+    background-color: white;
+    color: black;
+    border-radius: 18px;
+    
+    min-width: 60%;
+    max-width: 80%;
+    min-height: 50%;
+    max-height: 70%;
+    margin: 10px auto;
+}
