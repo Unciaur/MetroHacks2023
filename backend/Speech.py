@@ -1,7 +1,5 @@
 import speech_recognition as sr
 
-
-
 class STT:
 
     def __init__(self):
