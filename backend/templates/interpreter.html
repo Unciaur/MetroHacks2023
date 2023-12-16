@@ -3,19 +3,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<<<<<<< HEAD
-fortnite
-<button onclick="record()">Start Recording</button>
-<button onclick="stopRecording()">Stop Recording</button>
-=======
 
 
-<div id="microphone">
-    <button onClick="toggleRecord" data-state="false">record on/off</button>
+<div id="microphone" data-state="false">
+    <button onclick="toggleRecord()">record on/off</button>
 </div>
 
->>>>>>> 15f747f616e787cef994427011587db01fc38faf
 {% endblock %}
+
 
 {% block scripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
