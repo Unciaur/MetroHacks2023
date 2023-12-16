@@ -1,7 +1,7 @@
 
 var socket = io.connect("http://127.0.0.1:5000");
 const audioCtx = new AudioContext();
-var recording;
+var recording=false;
 var mediaRecorder;
 var stream;
 
@@ -17,22 +17,21 @@ if (navigator.mediaDevices) {
 
 
 function toggleRecord() {
+    recording = !recording;
     var mic = document.getElementById('microphone');
-    var state = mic.getAttribute('data-state')
     var btn = mic.firstChild;
-    console.log(state)
     if (recording) {
         mediaRecorder.stop();
     } else {
         mediaRecorder = new MediaRecorder(stream);
         let chunks = [];
-        mediaRecorder.ondataavailable = e=>{
-            socket.emit('audio', e.data)
-        }
         mediaRecorder.start();
     }
     console.log("recoridng:"+recording)
-    recording = !recording;
+}
+
+mediaRecorder.ondataavailable = e=>{
+    socket.emit('audio', e.data)
 }
 
 socket.on('audio', data=>{

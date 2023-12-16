@@ -90,3 +90,11 @@ a{
     border-radius: 40px;
     height: 40%;
 }
+
+section.hero h1{
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}
