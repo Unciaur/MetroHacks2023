@@ -91,10 +91,19 @@ a{
     height: 40%;
 }
 
-section.hero h1{
-    font-size: 50px;
+section.hero {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+section.hero h1{
+    font-size: 50px;
     height: 60%;
+}
+
+section.hero img{
+    width:30%;
+    margin: auto;
 }
