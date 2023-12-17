@@ -1,7 +1,7 @@
 import speech_recognition as sr
+import asyncio
 
 class STT:
-
     def __init__(self):
         self.r = sr.Recognizer()
         self.mic = sr.Microphone()
