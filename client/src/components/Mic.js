@@ -56,7 +56,7 @@ export default function Mic() {
   };
 
   return (
-    <div>
+    <div id="microphone">
         {signer}
       <button onClick={toggleRecording}>
         {recording ? 'Stop Recording' : 'Start Recording'}
