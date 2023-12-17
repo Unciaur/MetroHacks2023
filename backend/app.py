@@ -17,18 +17,18 @@ app.config["SECRET_KEY"] = "metrohackshdsjafhsdjkfhsdjkfhs"
 def index():
     return jsonify({"message": "Hello World"})
 
-@app.route("/interpret", methods=['POST', 'GET'])
+@app.route("/interpret", methods=["GET", "POST"])
 def interpret():
     if request.method=="POST":
+        return jsonify({"message": "Hello World"})
         aud= request.form["audio"]
         print(aud)
         recognizer = sr.Recognizer()
         with sr.AudioFile(request.form["audio"]) as source:
             audio = recognizer.listen(source)
             text = recognizer.recognize_google(audio)
-        return jsonify({"message": "Hello World"})
-    else:
-        return jsonify({"message": "What's up lil bro"})
+    if request.method=='"GET":
+        return jsonify({"message": "Hello Worl"})
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, host="127.0.0.1", port=5000)
