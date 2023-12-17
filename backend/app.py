@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, jsonify, make_response, Respo
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 import speech_recognition as sr
+import base64, io, json
+
 
 app = Flask(__name__)
 CORS(app, resources={r"/interpret": {"origins": "*"}})
@@ -29,8 +31,10 @@ def interpret():
     if request.method=="OPTIONS":
         return _build_cors_preflight_response()
     elif request.method=="POST":
-        audio = request.files["audio"]
-        return jsonify({"message": "Hello World"})
+        base64_data = request.form["audio"]
+        stt = STT()
+        text = stt.regcognize_b64(base64_data)
+        return jsonify({"message": text})
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, host="127.0.0.1", port=5000)
