@@ -1,4 +1,4 @@
-# MetroHacks2023
+# Let's Sign!
 
 ## Live Demo: [letssign.xyz](https://letssign.xyz)
 
