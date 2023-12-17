@@ -3,13 +3,19 @@ import { useState, useEffect } from "react";
 
 
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
-var images = {}
-
+var letter_images = {}
+var number_images = [];
 
 
 for(var i = 0; i < 27; i++){
-    images[alphabet[i]]=`https://api.letssign.xyz/static/asl/${alphabet[i]}`
+    letter_images[alphabet[i]]=`https://api.letssign.xyz/static/asl/${alphabet[i]}`
 }
+
+for(var i=1;i<=10; i++){
+    number_images.push(`https://api.letssign.xyz/static/asl/${i}`)
+}
+
+console.log(number_images)
 
 
 function start_signing(chars, setCurrentImage, setCurrentText, setSigner, setSignStyle){
@@ -19,8 +25,16 @@ function start_signing(chars, setCurrentImage, setCurrentText, setSigner, setSig
     console.log(queue)
     for (var i = 0; i < chars.length; i++){
         for(var j = 0; j < chars[i].length; j++){
-            textQueue.push(chars[i][j])
-            queue.push(images[chars[i][j]])
+            var current = chars[i][j]
+            textQueue.push(current)
+
+            if(alphabet.includes(current)){
+                queue.push(letter_images[chars[i][j]])
+            }else{
+                current = parseInt(current)
+                console.log(current)
+                queue.push(number_images[current-1])
+            }
         }
     }
     function changeImage(){
