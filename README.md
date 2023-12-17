@@ -1,7 +1,7 @@
 # Let's Sign! 🤖✏️
 
 ## Live Demo: [letssign.xyz](https://letssign.xyz)
-An online ASL interpreter and translator. 💬
+An online ASL interpreter and translator. 💬  
 We worked really hard on this for our MetroHacks 2023 submission! 💖
 Hope you like it! 🥰
 
