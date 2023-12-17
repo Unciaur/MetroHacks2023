@@ -24,25 +24,27 @@ export default function Mic() {
       const blob = new Blob(recordedChunks.current, { type: 'audio/webm' });
       console.log(blob)
       recordedChunks.current = [];
-      // Send blob to backend
-      const formData = new FormData();
-      formData.append('audio', blob);
+    //   // Send blob to backend
+    //   const formData = new FormData();
+    //   formData.append('audio', blob);
+    const reader= new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = function(){
+        var base64data = reader.result;
+        console.log(base64data)
+        // Send base64data to backend
       var res = fetch('https://api.letssign.xyz/interpret', {
         method: 'POST',
-        body: formData,
+        headers:{
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({audio:base64data}),
       })
       .then(response => {
         console.log(response)
         return response
       })
-      .then(data => {
-        console.log(data)
-      
-      })
-      .catch(error=>{
-        console.error('Error:',error)
-      })
-    };
+    };}
   };
 
   const toggleRecording = () => {
