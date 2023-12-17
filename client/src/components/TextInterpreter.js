@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function text_parse(text){
     var out = {}
+    text=text.toLowerCase()
     var words = text.split(" ")
     out.chars = []
     words.forEach(element => {
