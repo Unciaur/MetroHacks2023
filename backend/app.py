@@ -1,5 +1,5 @@
 from Speech import STT
-from flask import Flask, render_template, request, jsonify, make_response, Response, send_file
+from flask import Flask, render_template, request, jsonify, make_response, Response, send_from_directory, send_file
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 import speech_recognition as sr
@@ -34,8 +34,13 @@ def interpret():
         base64_data = request.form["audio"]
         logging.info(base64_data)
         stt = STT()
-        text = stt.regcognize_b64(base64_data)
-        return jsonify({"message": text})
+        data = stt.regcognize_b64(base64_data)
+        return jsonify(data)
+
+
+@app.route("/static/asl/<letter>")
+def get_asl_img(letter):
+    return send_file(f'static/asl/{letter}.png')
 
 
 if __name__ == "__main__":
