@@ -26,7 +26,7 @@ class STT:
 
         output = {
             "words":words,
-            "chars": [[char for char in word] for word in words],
+            "chars": [[char.lower() for char in word] for word in words],
             "sentence": text
         }
         return output
