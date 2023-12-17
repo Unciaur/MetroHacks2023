@@ -41,7 +41,7 @@ export default function Mic() {
         return response.json()
       })
       .then(data => {
-        setSigner(<Signer data={data}/>)
+        setSigner(<Signer data={data} setSigner={setSigner}/>)
       })
     };}
   };

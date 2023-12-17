@@ -106,3 +106,8 @@ section.hero img{
     width:30%;
     margin: auto;
 }
+
+img.duplicate{
+
+    transform: translateX(100px);
+}
