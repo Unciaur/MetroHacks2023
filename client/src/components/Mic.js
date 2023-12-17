@@ -8,7 +8,7 @@ export default function Mic() {
   const startRecording = () => {
     navigator.mediaDevices.getUserMedia({ audio: true })
       .then(stream => {
-        mediaRecorder.current = new MediaRecorder(stream);
+        mediaRecorder.current = new MediaRecorder(stream, {mimeType:'audio/webm'});
         mediaRecorder.current.ondataavailable = e => {
           if (e.data.size > 0) {
             recordedChunks.current.push(e.data);
