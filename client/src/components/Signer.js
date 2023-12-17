@@ -15,8 +15,6 @@ for(var i=1;i<=10; i++){
     number_images.push(`https://api.letssign.xyz/static/asl/${i}`)
 }
 
-console.log(number_images)
-
 
 function start_signing(chars, setCurrentImage, setCurrentText, setSigner, setSignStyle){
     console.log("LOOP STARTED")
@@ -42,10 +40,8 @@ function start_signing(chars, setCurrentImage, setCurrentText, setSigner, setSig
             setSignStyle("");
             var i = queue.shift()
             if (i == queue[0]){
-                //then its a duplicate
                 setSignStyle("duplicate")
             }
-            console.log(i)
             setCurrentImage(i)
             setCurrentText(textQueue.shift())
             setTimeout(changeImage, 1000)
@@ -69,10 +65,12 @@ export default function Signer(props){
         start_signing(chars, setCurrentImage, setCurrentText, props.setSigner, setSignStyle)
     }, [chars])
 
-    return <div>
-        Spelling {sentence}
-        {currentText}
+    return <div className='signer'>
         <img src={currentImage} alt="" className={signStyle}/>
+        <div className='signer-info'>
+        <div className="spelling">Spelling: "{sentence}"</div>
+        <div className="letter">{currentText}</div>
+        </div>
     </div>
 
 }

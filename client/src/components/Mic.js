@@ -1,5 +1,8 @@
 import { useState, useRef } from 'react';
 import Signer from './Signer';
+
+import TextInterpreter from './TextInterpreter';
+
 export default function Mic() {
   const [recording, setRecording] = useState(false);
   const mediaRecorder = useRef(null);
@@ -61,9 +64,13 @@ export default function Mic() {
   return (
     <div id="microphone">
         {signer}
+        
+        <div className="button-container">
+        <TextInterpreter setSigner={setSigner}></TextInterpreter>
       <button onClick={toggleRecording}>
-        {recording ? 'Stop Recording' : 'Start Recording'}
+        🎙️ {recording ? 'Stop Recording' : 'Start Recording'} 🎤
       </button>
+        </div>
     </div>
   );
 }
