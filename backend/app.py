@@ -4,7 +4,7 @@ from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 import speech_recognition as sr
 import base64, io, json
-
+import logging
 
 app = Flask(__name__)
 CORS(app, resources={r"/interpret": {"origins": "*"}})
@@ -32,6 +32,7 @@ def interpret():
         return _build_cors_preflight_response()
     elif request.method=="POST":
         base64_data = request.form["audio"]
+        logging.info(base64_data)
         stt = STT()
         text = stt.regcognize_b64(base64_data)
         return jsonify({"message": text})
