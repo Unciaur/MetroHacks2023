@@ -99,16 +99,15 @@ a{
     color: white;
     border: none;
     font-size: 18px;
-    padding: 5px 15px;
+    padding: 8px 15px;
     font-weight: bold;
     
 }
 
 #microphone button:hover{
-    background-color: rgb(14, 14, 63);
+    background-color: rgb(6, 6, 15);
     cursor: pointer;
     outline: 3px solid white;
-    transform: scale(1.05);
 }
 
 section.hero {
