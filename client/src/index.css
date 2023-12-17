@@ -85,9 +85,30 @@ a{
 
 
 #microphone{
-    background-color: rgb(0, 0, 0);
-    border-radius: 40px;
-    height: 40%;
+    border: 3px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+
+#microphone button{
+    border-radius: 19px;
+    background: black;
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 5px 15px;
+    font-weight: bold;
+    
+}
+
+#microphone button:hover{
+    background-color: rgb(14, 14, 63);
+    cursor: pointer;
+    outline: 3px solid white;
+    transform: scale(1.05);
 }
 
 section.hero {
@@ -105,4 +126,9 @@ section.hero h1{
 section.hero img{
     width:30%;
     margin: auto;
+}
+
+img.duplicate{
+
+    transform: translateX(100px);
 }

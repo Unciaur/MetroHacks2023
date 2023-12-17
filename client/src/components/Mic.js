@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react';
-
+import Signer from './Signer';
 export default function Mic() {
   const [recording, setRecording] = useState(false);
   const mediaRecorder = useRef(null);
   const recordedChunks = useRef([]);
-
+    const [signer, setSigner] = useState(null);
   const startRecording = () => {
     navigator.mediaDevices.getUserMedia({ audio: true })
       .then(stream => {
@@ -25,24 +25,23 @@ export default function Mic() {
       console.log(blob)
       recordedChunks.current = [];
     //   // Send blob to backend
-    //   const formData = new FormData();
-    //   formData.append('audio', blob);
+    const formData = new FormData();
     const reader= new FileReader();
     reader.readAsDataURL(blob);
     reader.onloadend = function(){
         var base64data = reader.result;
         console.log(base64data)
+        formData.append('audio', base64data);
         // Send base64data to backend
       var res = fetch('https://api.letssign.xyz/interpret', {
         method: 'POST',
-        headers:{
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({audio:base64data}),
+        body: formData,
       })
       .then(response => {
-        console.log(response)
-        return response
+        return response.json()
+      })
+      .then(data => {
+        setSigner(<Signer data={data} setSigner={setSigner}/>)
       })
     };}
   };
@@ -51,13 +50,14 @@ export default function Mic() {
     if (!recording) {
       startRecording();
     } else {
-      stopRecording();
+        setTimeout(stopRecording, 500)
     }
     setRecording(!recording);
   };
 
   return (
-    <div>
+    <div id="microphone">
+        {signer}
       <button onClick={toggleRecording}>
         {recording ? 'Stop Recording' : 'Start Recording'}
       </button>
