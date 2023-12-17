@@ -1,5 +1,5 @@
 from Speech import STT
-from flask import Flask, render_template, request, jsonify, make_response, Response
+from flask import Flask, render_template, request, jsonify, make_response, Response, send_file
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 import speech_recognition as sr
@@ -36,6 +36,7 @@ def interpret():
         stt = STT()
         text = stt.regcognize_b64(base64_data)
         return jsonify({"message": text})
+
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, host="127.0.0.1", port=5000)
