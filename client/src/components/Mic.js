@@ -27,10 +27,21 @@ export default function Mic() {
       // Send blob to backend
       const formData = new FormData();
       formData.append('audio', blob);
-      fetch('https://api.letssign.xyz/interpret', {
+      var res = fetch('https://api.letssign.xyz/interpret', {
         method: 'POST',
-        body: formData
-      });
+        body: formData,
+      })
+      .then(response => {
+        console.log(response)
+        return response
+      })
+      .then(data => {
+        console.log(data)
+      
+      })
+      .catch(error=>{
+        console.error('Error:',error)
+      })
     };
   };
 
