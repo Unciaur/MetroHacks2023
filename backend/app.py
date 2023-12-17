@@ -5,7 +5,7 @@ from flask_cors import CORS
 import speech_recognition as sr
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/interpret": {"origins": "*"}})
 app.config["SECRET_KEY"] = "metrohackshdsjafhsdjkfhsdjkfhs"
 # socketio = SocketIO(app)
 
@@ -13,22 +13,24 @@ app.config["SECRET_KEY"] = "metrohackshdsjafhsdjkfhsdjkfhs"
 # def handle_audio(audio):
 #     return jsonify({"message": "Hello World"})
 
+def _build_cors_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    return response
+
 @app.route("/")
 def index():
     return jsonify({"message": "Hello World"})
 
-@app.route("/interpret", methods=["GET", "POST"])
+@app.route("/interpret", methods=["POST", "OPTIONS"])
 def interpret():
-    if request.method=="POST":
+    if request.method=="OPTIONS":
+        return _build_cors_preflight_response()
+    elif request.method=="POST":
+        audio = request.files["audio"]
         return jsonify({"message": "Hello World"})
-        aud= request.form["audio"]
-        print(aud)
-        recognizer = sr.Recognizer()
-        with sr.AudioFile(request.form["audio"]) as source:
-            audio = recognizer.listen(source)
-            text = recognizer.recognize_google(audio)
-    if request.method=='"GET":
-        return jsonify({"message": "Hello Worl"})
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, host="127.0.0.1", port=5000)
