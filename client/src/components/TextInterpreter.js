@@ -15,7 +15,6 @@ function text_parse(text){
     return out
 }
 
-console.log(text_parse("hello world"))
 
 export default function TextInterpreter(props){
     const [text, setText] = useState("");
