@@ -49,6 +49,9 @@ export default function Mic() {
   const toggleRecording = () => {
     if (!recording) {
       startRecording();
+      if(signer != null){
+        setSigner(null)
+      }
     } else {
         setTimeout(stopRecording, 500)
     }
